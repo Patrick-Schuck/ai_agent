@@ -3,15 +3,15 @@ from google.genai import types
 
 MAX_CHARS = 10000
 
-schema_get_files_info = types.FunctionDeclaration(
-    name="get_files_info",
-    description="Lists files in a specified directory relative to the working directory, providing file size and directory status",
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Accesses the content of a file for a given directory. Also checks, whether this file exists in the first place.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "directory": types.Schema(
+            "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="Directory path to list files from, relative to the working directory (default is the working directory itself)",
+                description="File path for the file, that we want to the content from, relative to the working directory.",
             ),
         },
     ),
